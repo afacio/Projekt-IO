@@ -22,7 +22,6 @@ class Plansza():
                     if x % 2 == 0:
                         self.plansza[x][y] = A.POLE_BIALE
                     else:
-                        None
                         f = Figura()
                         f.setFigura("Czarny", "Pionek")
                         self.plansza[x][y] = f
@@ -283,4 +282,23 @@ class Plansza():
                         return [x1, y1]
         return False
 
-
+    def wys(self):
+        for y in range(A.BOARD_SIZE):
+            for x in range(A.BOARD_SIZE):
+                if type(self.plansza[x][y]) is Figura:
+                    if Figura.getWaga(self.plansza[x][y]) == "Pionek":
+                        if Figura.getKolor(self.plansza[x][y]) == "Bialy":
+                            print("Pi_B", end=" ")
+                        else:
+                            print("Pi_C", end=" ")
+                    if Figura.getWaga(self.plansza[x][y]) == "Damka":
+                        if Figura.getKolor(self.plansza[x][y]) == "Bialy":
+                            print("Da_B", end=" ")
+                        else:
+                            print("Da_C", end=" ")
+                else:
+                    if self.plansza[x][y] == A.POLE_CZARNE:
+                        print("Po_C", end=" ")
+                    else:
+                        print("Po_B", end=" ")
+            print()
